@@ -1,0 +1,22 @@
+name: Auto Request Review
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, reopened]
+  pull_request_review:
+    types: [submitted]
+  issue_comment:
+    types: [created]
+
+jobs:
+  auto-request-review:
+    name: Auto Request Review
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - name: Request review based on files changes and/or require-review directives
+        uses: necojackarc/auto-request-review@require-review-comment
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
