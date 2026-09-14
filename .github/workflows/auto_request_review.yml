@@ -15,6 +15,7 @@ jobs:
     permissions:
       pull-requests: write
       contents: read
+      checks: write
     steps:
       - name: Request review based on files changes and/or require-review directives
         uses: necojackarc/auto-request-review@require-review-comment
